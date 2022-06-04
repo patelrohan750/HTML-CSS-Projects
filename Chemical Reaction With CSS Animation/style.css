@@ -1,0 +1,171 @@
+:root{
+    --grey: rgb(34,48,64);
+    --blue: rgb(0,122,253);
+    --green: rgb(6,215,108);
+    --white: rgb(253,251,252);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--grey);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.RB_flask{
+    position: relative;
+    height: 20rem;
+    width: 25rem;
+    animation: shake 1.3s ease-in-out;
+}
+
+@keyframes shake{
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-20); }
+    40% { transform: translateX(20); }
+    60% { transform: translateX(-20); }
+    80% { transform: translateX(20); }
+    100% { transform: translateX(0); }
+}
+
+.RB_flask::after{
+    position: absolute;
+    content: '';
+    top: -11.5%;
+    left: 62.5%;
+    transform: translateX(-63%) rotate(15deg);
+
+    width: 4.5rem;
+    height: 5.5rem;
+    background-color: var(--grey);
+    border: .2rem solid var(--white);
+    border-top: none;
+    border-bottom: none;
+}
+ 
+.chemical{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(25deg);
+    width: 14rem;
+    height: 14rem;
+    border: .2rem solid var(--white);
+    border-top: .2rem solid var(--grey);
+    border-radius: 50%;
+
+    outline: .2rem solid var(--white);
+    outline-offset: .5rem;
+    overflow: hidden;
+}
+ 
+.chemical::after{
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 15%;
+    transform: rotate(75deg);
+    width: 100%;
+    height: 130%;
+    background-color: var(--green);
+    animation:  wave 1.3s linear;
+}
+
+@keyframes wave{
+    0% {
+        transform: rotate(75deg);
+        background-color: var(--blue);
+    }
+    10% { transform: rotate(69deg); }
+    20% { transform: rotate(62deg); }
+    30% { transform: rotate(69deg); }
+    40% { transform: rotate(75deg); }
+    50% { transform: rotate(80deg); }
+    60% { transform: rotate(85deg); }
+    70% { 
+        transform: rotate(90deg); 
+        background-color: var(--blue);
+        }
+    80% { transform: rotate(85deg); }
+    90% { transform: rotate(80deg); }
+    100% { transform: rotate(75deg); }
+    
+}
+
+.bubbles{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(10px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bubble{
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--green);
+    border-radius: 50%;
+    transform: translate(60px, 65px);
+    animation: chemical_bubbles 2s linear infinite;
+}
+
+@keyframes chemical_bubbles {
+    0% {
+        transform:translate(60px, 65px) scale(.3);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    60% {
+        transform: translate(20px, 45px);
+        opacity: 1;
+
+    }
+    100% {
+        transform: translate(-40px, -80px) scale(.4);
+        opacity: 0;
+    }
+}
+ 
+.bubble:nth-child(1){ animation-delay: 1.4s;}
+.bubble:nth-child(2){
+    width: 2rem;
+    height: 2rem;
+    animation-delay: 3.8s;
+}
+.bubble:nth-child(3){
+    width: 2.5rem;
+    height: 2.5rem;
+    animation-delay: .6s;
+}
+.bubble:nth-child(4){
+    width: 1.4rem;
+    height: 1.4rem;
+    animation-delay: 3s;
+}
+.bubble:nth-child(5){
+    animation-delay: 2.2%;
+} 
+
+.brand_name{
+    color: var(--white);
+}
+
+.first_name{
+    font: lighter 2.5rem helvetica, sans-serif;
+}
+
+.last_name{
+    font: bolder 2.5rem helvetica, sans-serif;
+}
