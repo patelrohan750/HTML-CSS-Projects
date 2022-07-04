@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(45deg, purple, blue);
+        }
+
+        .star_rating{
+            user-select: none;
+            color: white;
+            background-color: white;
+            padding: 1.4rem 2.5rem;
+            margin: 2rem;
+            border-radius: .4rem;
+            text-align: center;
+			animation: slide-up 1s ease;
+        }
+
+        @keyframes slide-up{
+            0%{
+                opacity: 0;
+                transform: scale(.5);
+            }
+
+            100%{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+
+        .rating_heading{
+            color: white;
+            animation: scale-up 1s ease;
+        }
+
+        @keyframes scale-up{
+            0%{
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100%{
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        .star{
+            font-size: 3rem;
+            color: #ff9800;
+            background-color: unset;
+            border: none;
+        }
+
+        .star:hover{
+            cursor: pointer;
+        } 
+    </style>
+</head>
+<body>
+    <h1 class="rating_heading">5 Star Rating</h1>
+    <div class="star_rating">
+        <p style="color: black;">How was your experience?</p>
+        <button class="star" type="button">&#9734;</button>
+        <button class="star" type="button">&#9734;</button>
+        <button class="star" type="button">&#9734;</button>
+        <button class="star" type="button">&#9734;</button>
+        <button class="star" type="button">&#9734;</button>
+        <p class="current_rating" style="color: black;">0 of 5</p>
+    </div>
+
+    <script>
+        const allstar = document.querySelectorAll(".star");
+        let current_star_level = document.querySelector('.current_rating');
+
+        allstar.forEach((star, i) => {
+            star.onclick = function() {
+                let current_star_level_value = i + 1;
+                current_star_level.innerText = `${current_star_level_value} of 5`;
+                allstar.forEach((star, j) => {
+                    if( current_star_level_value >= j+1 )
+                    {
+                        star.innerHTML = '&#9733';
+                    }else{
+                        star.innerHTML = '&#9734';
+                    }
+                })
+            }
+        })
+            
+    </script>
+</body>
+</html>
